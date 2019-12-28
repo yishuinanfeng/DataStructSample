@@ -1,0 +1,14 @@
+//
+// Created by yanyinan on 2019/12/28.
+//
+
+#ifndef DATASTRUCTURESAMPLE_LINKEDLIST_H
+#define DATASTRUCTURESAMPLE_LINKEDLIST_H
+
+
+class LinkedList {
+
+};
+
+
+#endif //DATASTRUCTURESAMPLE_LINKEDLIST_H
