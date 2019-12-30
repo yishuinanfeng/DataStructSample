@@ -16,8 +16,8 @@ template<class E>
 class ArrayList {
 private:
     E *array;//数组指针
-    int length = 0;//数组长度
-    int index = 0;//当前角标,也可以理解为当前有效数据的个数
+    int length;//数组长度
+    int index;//当前角标,也可以理解为当前有效数据的个数
 
 public:
 
