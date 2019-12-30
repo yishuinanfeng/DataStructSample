@@ -22,6 +22,7 @@ add_library( # Sets the name of the library.
         ArrayList/ArrayList.cpp
         LinkedList/LinkedList.cpp
         BubbleSort/BubbleSort.cpp
+        SelectSort/SelectSort.cpp
         ArrayUtil.cpp)
 
 # Searches for a specified prebuilt library and stores the path as a

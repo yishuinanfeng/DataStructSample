@@ -3,6 +3,7 @@
 #include "ArrayList/ArrayList.hpp"
 #include "LinkedList/LinkedList.hpp"
 #include "BubbleSort/BubbleSort.h"
+#include "SelectSort/SelectSort.h"
 
 #define LOGD(...) __android_log_print(ANDROID_LOG_DEBUG,"native_lib",__VA_ARGS__)
 
@@ -19,7 +20,7 @@ Java_com_haha_datastructuresample_MainActivity_stringFromJNI(
 //    }
 //
 //    delete(list);
-
+//---------------------ArrayList-----------------
 
 //-------------------LinkedList----------------------------
 //    LinkedList<int> *list = new LinkedList<int>();
@@ -35,16 +36,30 @@ Java_com_haha_datastructuresample_MainActivity_stringFromJNI(
 //    for (int i = 0; i < list->size(); ++i) {
 //        LOGD("list push:%d", list->get(i)->value);
 //    }
-
+//-------------------LinkedList----------------------------
 
 // -----------------------BubbleSort------------------------------
+//    int a[] = {2, 5, 3, 8, 1, 4, 0, 6};
+//    BubbleSort *bubbleSort = new BubbleSort();
+//    bubbleSort->sort(a, 8);
+//
+//    for (int i = 0; i < 8; ++i) {
+//        LOGD("arr factor:%d", a[i]);
+//    }
+
+    // -----------------------BubbleSort------------------------------
+    //
+    // -----------------------SelectSort------------------------------
     int a[] = {2, 5, 3, 8, 1, 4, 0, 6};
-    BubbleSort *bubbleSort = new BubbleSort();
-    bubbleSort->sort(a, 8);
+    SelectSort* selectSort = new SelectSort();
+    selectSort->sort(a,8);
 
     for (int i = 0; i < 8; ++i) {
         LOGD("arr factor:%d", a[i]);
     }
+
+    // -----------------------SelectSort------------------------------
+
 
     std::string hello = "Hello from C++";
     return env->NewStringUTF(hello.c_str());
