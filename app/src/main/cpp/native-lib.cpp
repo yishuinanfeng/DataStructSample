@@ -39,24 +39,24 @@ Java_com_haha_datastructuresample_MainActivity_stringFromJNI(
 //-------------------LinkedList----------------------------
 
 // -----------------------BubbleSort------------------------------
-//    int a[] = {2, 5, 3, 8, 1, 4, 0, 6};
-//    BubbleSort *bubbleSort = new BubbleSort();
-//    bubbleSort->sort(a, 8);
-//
-//    for (int i = 0; i < 8; ++i) {
-//        LOGD("arr factor:%d", a[i]);
-//    }
-
-    // -----------------------BubbleSort------------------------------
-    //
-    // -----------------------SelectSort------------------------------
     int a[] = {2, 5, 3, 8, 1, 4, 0, 6};
-    SelectSort* selectSort = new SelectSort();
-    selectSort->sort(a,8);
+    BubbleSort *bubbleSort = new BubbleSort();
+    bubbleSort->sort1(a, 8);
 
     for (int i = 0; i < 8; ++i) {
         LOGD("arr factor:%d", a[i]);
     }
+
+    // -----------------------BubbleSort------------------------------
+    //
+    // -----------------------SelectSort------------------------------
+//    int a[] = {2, 5, 3, 8, 1, 4, 0, 6};
+//    SelectSort* selectSort = new SelectSort();
+//    selectSort->sort(a,8);
+//
+//    for (int i = 0; i < 8; ++i) {
+//        LOGD("arr factor:%d", a[i]);
+//    }
 
     // -----------------------SelectSort------------------------------
 
