@@ -11,13 +11,17 @@
 #define LOGD(...) __android_log_print(ANDROID_LOG_DEBUG,"ArrayList",__VA_ARGS__)
 
 //声明
-//todo 有崩溃bug
+//todo 1.有崩溃bug  2.remove方法
+/**
+ * 一个用c++仿写的ArrayList
+ * @tparam E
+ */
 template<class E>
 class ArrayList {
 private:
     E *array;//数组指针
     int length;//数组长度
-    int index;//当前角标,也可以理解为当前有效数据的个数
+    int index = 0;//当前角标,也可以理解为当前有效数据的个数
 
 public:
 
@@ -83,8 +87,13 @@ void ArrayList<E>::add(E e) {
 
 template<class E>
 E ArrayList<E>::remove(int index) {
-    //todo 补充
-    return NULL;
+    E e = array[index];
+    //index之后的元素进行往前挪动一位（这里只需要挪动到最后一个有效元素即可）
+    for (int i = index; i < this->index - 1; ++i) {
+        array[i] = array[i + 1];
+    }
+    this->index -= 1;
+    return e;
 }
 
 template<class E>
@@ -106,7 +115,7 @@ void ArrayList<E>::grow(int capacity) {
         newLength = capacity;
     }
 
-    E *newArray = (E*) malloc(sizeof(E) * newLength);
+    E *newArray = (E *) malloc(sizeof(E) * newLength);
 
     if (array) {
         memcpy(newArray, array, sizeof(E) * index);

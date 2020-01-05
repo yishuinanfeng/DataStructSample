@@ -14,13 +14,19 @@ Java_com_haha_datastructuresample_MainActivity_stringFromJNI(
         jobject /* this */) {
 
     //---------------------ArrayList-----------------
-//    auto *list = new ArrayList<int>();
-//
-//    for (int i = 0; i < 100; ++i) {
-//        list->add(i);
-//    }
-//
-//    delete(list);
+    auto *list = new ArrayList<int>();
+
+    for (int i = 0; i < 100; ++i) {
+        list->add(i);
+    }
+
+   //  list->remove(10);
+
+    for (int i = 0; i < list->size(); ++i) {
+        LOGD("arr factor:%d", list->get(i));
+    }
+
+    delete (list);
 //---------------------ArrayList-----------------
 
 //-------------------LinkedList----------------------------
@@ -63,14 +69,14 @@ Java_com_haha_datastructuresample_MainActivity_stringFromJNI(
 
 
     // -----------------------InsertSort------------------------------
-    int a[] = {2, 5, 3, 8, 1, 4, 0, 6};
-
-    // -----------------------InsertSort------------------------------
-    InsertSort *insertSort = new InsertSort();
-    insertSort->sort(a, 8);
-        for (int i = 0; i < 8; ++i) {
-        LOGD("arr factor:%d", a[i]);
-    }
+//    int a[] = {2, 5, 3, 8, 1, 4, 0, 6};
+//
+//    // -----------------------InsertSort------------------------------
+//    InsertSort *insertSort = new InsertSort();
+//    insertSort->sort(a, 8);
+//        for (int i = 0; i < 8; ++i) {
+//        LOGD("arr factor:%d", a[i]);
+//    }
 
     std::string hello = "Hello from C++";
     return env->NewStringUTF(hello.c_str());

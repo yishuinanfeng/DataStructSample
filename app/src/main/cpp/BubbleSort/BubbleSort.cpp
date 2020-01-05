@@ -5,7 +5,6 @@
 #include "BubbleSort.h"
 #include "../ArrayUtil.h"
 
-
 void BubbleSort::sort(int *arr, int len) {
     for (int i = 0; i < len - 1; ++i) {
         for (int j = 0; j < len - i - 1; ++j) {
@@ -36,6 +35,10 @@ void BubbleSort::sort1(int *arr, int len) {
             break;
         }
     }
+}
+
+void BubbleSort::sort2(int *arr, int len) {
+
 }
 
 

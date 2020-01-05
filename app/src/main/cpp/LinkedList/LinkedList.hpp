@@ -23,6 +23,10 @@ Node<E>::Node(E e, Node<E> *next) {
     this->next = next;
 }
 
+/**
+ * 一个用c++仿写的LinkedList
+ * @tparam E
+ */
 template<class E>
 class LinkedList {
     Node<E> *head;
