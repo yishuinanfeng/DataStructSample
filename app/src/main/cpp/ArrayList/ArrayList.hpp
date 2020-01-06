@@ -8,7 +8,7 @@
 #include <string.h>
 #include <android/log.h>
 
-#define LOGD(...) __android_log_print(ANDROID_LOG_DEBUG,"ArrayList",__VA_ARGS__)
+#define LOGD(...) __android_log_print(ANDROID_LOG_DEBUG,"DataStructure",__VA_ARGS__)
 
 //声明
 //todo 1.有崩溃bug  2.remove方法
