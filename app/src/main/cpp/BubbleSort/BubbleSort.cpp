@@ -8,6 +8,7 @@
 void BubbleSort::sort(int *arr, int len) {
     for (int i = 0; i < len - 1; ++i) {
         for (int j = 0; j < len - i - 1; ++j) {
+            //这里不要写>=，不然编程不稳定排序，而且会增加没必要的交换
             if (arr[j] > arr[j + 1]) {
                 //   ArrayUtil::swap1(arr[j], arr[j + 1]);
                 //  ArrayUtil::swap2(&arr[j], &arr[j + 1]);

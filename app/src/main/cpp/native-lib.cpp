@@ -5,6 +5,7 @@
 #include "BubbleSort/BubbleSort.h"
 #include "SelectSort/SelectSort.h"
 #include "InsertSort/InsertSort.h"
+#include "ShellSort/ShellSort.h"
 
 #define LOGD(...) __android_log_print(ANDROID_LOG_DEBUG,"DataStructure",__VA_ARGS__)
 
@@ -30,25 +31,25 @@ Java_com_haha_datastructuresample_MainActivity_stringFromJNI(
 //---------------------ArrayList-----------------
 
 //-------------------LinkedList----------------------------
-    LinkedList<int> *list = new LinkedList<int>();
-
-    list->push(2);
-    list->push(3);
-    list->push(4);
-    list->push(6);
-
-    list->insert(0, 100);
-
-    list->remove(0);
-  //  LOGD("list->size():%d", list->size());
-    list->remove(list->size() - 1);
-
-
-   // LOGD("list get 3:%d", list->get(3)->value);
-
-    for (int i = 0; i < list->size(); ++i) {
-        LOGD("list(i):%d", list->get(i)->value);
-    }
+//    auto *list = new LinkedList<int>();
+//
+//    list->push(2);
+//    list->push(3);
+//    list->push(4);
+//    list->push(6);
+//
+//    list->insert(0, 100);
+//
+//    list->remove(0);
+//    //  LOGD("list->size():%d", list->size());
+//    list->remove(list->size() - 1);
+//
+//
+//    // LOGD("list get 3:%d", list->get(3)->value);
+//
+//    for (int i = 0; i < list->size(); ++i) {
+//        LOGD("list(i):%d", list->get(i)->value);
+//    }
 //-------------------LinkedList----------------------------
 
 // -----------------------BubbleSort------------------------------
@@ -77,12 +78,29 @@ Java_com_haha_datastructuresample_MainActivity_stringFromJNI(
     // -----------------------InsertSort------------------------------
 //    int a[] = {2, 5, 3, 8, 1, 4, 0, 6};
 //
-//    // -----------------------InsertSort------------------------------
+//
 //    InsertSort *insertSort = new InsertSort();
 //    insertSort->sort(a, 8);
 //        for (int i = 0; i < 8; ++i) {
 //        LOGD("arr factor:%d", a[i]);
 //    }
+//    // -----------------------InsertSort------------------------------
+
+
+//    // -----------------------ShellSort------------------------------
+    LOGD("ShellSort start");
+
+    int a[] = {2, 5, 3, 8, 1, 4, 0, 6};
+    ShellSort *pShellSort = new ShellSort();
+    pShellSort->sort(a, 8);
+    for (int i = 0; i < 8; ++i) {
+        LOGD("arr factor:%d", a[i]);
+    }
+
+    LOGD("ShellSort end");
+
+//    // -----------------------ShellSort------------------------------
+
 
     std::string hello = "Hello from C++";
     return env->NewStringUTF(hello.c_str());
