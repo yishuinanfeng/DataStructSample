@@ -11,16 +11,17 @@
 
 template<class E>
 struct Node {
-    Node<E> *next;
+    Node<E> *next, *pre;
     E value;
 
 public:
-    Node(E e, Node<E> *next);
+    Node(E e, Node<E> *pre, Node<E> *next);
 };
 
 template<class E>
-Node<E>::Node(E e, Node<E> *next) {
+Node<E>::Node(E e, Node<E> *pre, Node<E> *next) {
     this->value = e;
+    this->pre = pre;
     this->next = next;
 }
 
@@ -31,17 +32,21 @@ Node<E>::Node(E e, Node<E> *next) {
 template<class E>
 class LinkedList {
     Node<E> *head;
+    Node<E> *last;
 
     ~LinkedList();
 
+    //链表的长度
     int length;
 
 public:
-    void push(E e);
+    void addLast(E e);
+
+    void addFirst(E e);
 
     Node<E> *getLastNode() const;
 
-    Node<E> *getNodeByIndex(int index);
+    Node<E> *node(int index);
 
     int size();
 
@@ -58,13 +63,30 @@ LinkedList<E>::~LinkedList() {
 }
 
 template<class E>
-void LinkedList<E>::push(E e) {
-    Node<E> *newNode = new Node<E>(e, NULL);
+void LinkedList<E>::addLast(E e) {
+    Node<E> *last = this->last;
+    Node<E> *newNode = new Node<E>(e, last, NULL);
     if (head) {
-        Node<E> *lastNode = getLastNode();
-        lastNode->next = newNode;
+        last->next = newNode;
+        this->last = newNode;
     } else {
         head = newNode;
+        this->last = newNode;
+    }
+
+    length++;
+}
+
+template<class E>
+void LinkedList<E>::addFirst(E e) {
+    Node<E> *h = head;
+    Node<E> *newNode = new Node<E>(e, NULL, h);
+    if (head) {
+        h->pre = newNode;
+        head = newNode;
+    } else {
+        head = newNode;
+        last = newNode;
     }
 
     length++;
@@ -72,23 +94,30 @@ void LinkedList<E>::push(E e) {
 
 template<class E>
 Node<E> *LinkedList<E>::getLastNode() const {
-    Node<E> *h = head;
-    while (h) {
-        if (h->next == NULL) {
-            break;
-        }
-        h = h->next;
-    }
-    return h;
+    return last;
 }
 
 template<class E>
-Node<E> *LinkedList<E>::getNodeByIndex(int index) {
-    Node<E> *h = head;
-    for (int i = 0; i < index; ++i) {
-        h = h->next;
+Node<E> *LinkedList<E>::node(int index) {
+    if (index < (length >> 1)) {
+        //index在链表前半部分，从head开始遍历
+        Node<E> *h = head;
+        for (int i = 0; i < index; ++i) {
+            LOGD("getNodeByIndex i:%d，length：%d", i, length);
+            h = h->next;
+        }
+        return h;
+    } else {
+        //index在链表后半部分，从last开始遍历
+        Node<E> *l = last;
+        for (int i = length - 1; i > index; --i) {
+            LOGD("getNodeByIndex i:%d，length：%d", i, length);
+            l = l->pre;
+        }
+        return l;
     }
-    return h;
+
+
 }
 
 template<class E>
@@ -98,42 +127,70 @@ int LinkedList<E>::size() {
 
 template<class E>
 Node<E> *LinkedList<E>::get(int index) {
-    LOGD("get index:%d,length:%d", index,length);
+    LOGD("get index:%d,length:%d", index, length);
     assert(index >= 0 & index < length);
-    return getNodeByIndex(index);
+    return node(index);
 }
 
 template<class E>
 void LinkedList<E>::insert(int index, E e) {
-    LOGD("insert index:%d,length:%d", index,length);
+    LOGD("insert index:%d,length:%d", index, length);
     assert(index >= 0 && index <= length);
     if (index == 0) {
-        Node<E> *newNode = new Node<E>(e, head);
+        Node<E> *headNode = head;
+        Node<E> *newNode = new Node<E>(e, NULL, head);
         head = newNode;
+        if (headNode != NULL) {
+            headNode->pre = newNode;
+        }
+
+        length++;
+    } else if (index == length) {
+        addLast(e);
     } else {
         Node<E> *preNode = get(index - 1);
         Node<E> *nextNode = preNode->next;
-        Node<E> *newNode = new Node<E>(e, nextNode);
+        Node<E> *newNode = new Node<E>(e, preNode, nextNode);
         preNode->next = newNode;
+        //因为不是插入到末尾，所以nextNode不会为NULL
+        nextNode->pre = newNode;
+
+        length++;
     }
 
-    length++;
 
 }
 
 template<class E>
 void LinkedList<E>::remove(int index) {
-    LOGD("remove index:%d,length:%d", index,length);
+    LOGD("remove index:%d,length:%d", index, length);
     assert(index >= 0 && index < length);
     if (index == 0) {
         Node<E> *h = head;
         head = h->next;
+        //如果last就是head
+        if (h == last) {
+            last = NULL;
+        }
         //记得释放内存
         delete h;
+    } else if (index == length - 1) {
+        Node<E> *l = last;
+        Node<E> *pre = l->pre;
+        pre->next = NULL;
+        last = pre;
+        delete l;
     } else {
         Node<E> *preNode = get(index - 1);
+        LOGD("Node<E> *preNode = get(index - 1);");
         Node<E> *deleteNode = preNode->next;
-        preNode->next = deleteNode->next;
+        LOGD("Node<E> *deleteNode = preNode->next;");
+        Node<E> *nextNode = deleteNode->next;
+        LOGD(" Node<E> *nextNode = deleteNode->next;");
+        preNode->next = nextNode;
+        if (nextNode) {
+            nextNode->pre = preNode;
+        }
         delete deleteNode;
     }
 

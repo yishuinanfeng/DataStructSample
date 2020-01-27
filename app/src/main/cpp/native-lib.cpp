@@ -31,25 +31,27 @@ Java_com_haha_datastructuresample_MainActivity_stringFromJNI(
 //---------------------ArrayList-----------------
 
 //-------------------LinkedList----------------------------
-//    auto *list = new LinkedList<int>();
-//
-//    list->push(2);
-//    list->push(3);
-//    list->push(4);
-//    list->push(6);
-//
-//    list->insert(0, 100);
-//
-//    list->remove(0);
-//    //  LOGD("list->size():%d", list->size());
-//    list->remove(list->size() - 1);
-//
-//
-//    // LOGD("list get 3:%d", list->get(3)->value);
-//
-//    for (int i = 0; i < list->size(); ++i) {
-//        LOGD("list(i):%d", list->get(i)->value);
-//    }
+    auto *list = new LinkedList<int>();
+
+    list->addLast(2);
+    list->addLast(3);
+    list->addLast(4);
+    list->addLast(6);
+
+    list->insert(0, 100);
+
+    list->remove(0);
+    //  LOGD("list->size():%d", list->size());
+    list->remove(list->size() - 1);
+    list->addLast(9);
+
+    list->insert(list->size(), 200);
+
+    // LOGD("list get 3:%d", list->get(3)->value);
+
+    for (int i = 0; i < list->size(); ++i) {
+        LOGD("list(%d):%d", i, list->get(i)->value);
+    }
 //-------------------LinkedList----------------------------
 
 // -----------------------BubbleSort------------------------------
@@ -88,16 +90,16 @@ Java_com_haha_datastructuresample_MainActivity_stringFromJNI(
 
 
 //    // -----------------------ShellSort------------------------------
-    LOGD("ShellSort start");
-
-    int a[] = {2, 5, 3, 8, 1, 4, 0, 6};
-    ShellSort *pShellSort = new ShellSort();
-    pShellSort->sort(a, 8);
-    for (int i = 0; i < 8; ++i) {
-        LOGD("arr factor:%d", a[i]);
-    }
-
-    LOGD("ShellSort end");
+//    LOGD("ShellSort start");
+//
+//    int a[] = {2, 5, 3, 8, 1, 4, 0, 6};
+//    ShellSort *pShellSort = new ShellSort();
+//    pShellSort->sort(a, 8);
+//    for (int i = 0; i < 8; ++i) {
+//        LOGD("arr factor:%d", a[i]);
+//    }
+//
+//    LOGD("ShellSort end");
 
 //    // -----------------------ShellSort------------------------------
 
