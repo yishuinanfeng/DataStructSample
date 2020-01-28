@@ -41,6 +41,8 @@ private:
      * @param endIndex
      */
     void merge(int *arr, int startIndex, int midIndex, int endIndex);
+
+    void mergeSort1(int *arr, int startIndex, int endIndex);
 };
 
 

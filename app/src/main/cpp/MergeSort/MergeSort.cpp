@@ -10,7 +10,7 @@ void MergeSort::sort(int *arr, int len) {
 }
 
 void MergeSort::sort1(int *arr, int len) {
-
+    mergeSort1(arr, 0, len - 1);
 }
 
 void MergeSort::mergeSort(int *arr, const int startIndex, const int endIndex) {
@@ -58,4 +58,19 @@ void MergeSort::merge(int *arr, const int startIndex, const int midIndex, const 
         arr[l] = tempArr[l - startIndex];
     }
 
+}
+
+void MergeSort::mergeSort1(int *arr, int startIndex, int endIndex) {
+//递归先将数组元素拆分为一个元素为一组，然后从1到整个数组一层层合并
+    if (startIndex < endIndex) {
+        //使用位移求中间值
+        int midIndex = (startIndex + endIndex) >> 1;
+        LOGD("MergeSort startIndex：%d,midIndex:%d,endIndex:%d", startIndex, midIndex, endIndex);
+        mergeSort(arr, startIndex, midIndex);
+        mergeSort(arr, midIndex + 1, endIndex);
+        //如果前一个数组的最大值小于等于后一个数组的最小值，则不需要专门进行合并
+        if (arr[midIndex] > arr[midIndex + 1]) {
+            merge(arr, startIndex, midIndex, endIndex);
+        }
+    }
 }

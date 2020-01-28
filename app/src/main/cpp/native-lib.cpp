@@ -110,7 +110,7 @@ Java_com_haha_datastructuresample_MainActivity_stringFromJNI(
 
     int a[] = {2, 5, 3, 8, 1, 4, 0, 6};
     MergeSort *mergeSort = new MergeSort();
-    mergeSort->sort(a, 8);
+    mergeSort->sort1(a, 8);
 
     for (int i = 0; i < 8; ++i) {
         LOGD("arr factor:%d", a[i]);
