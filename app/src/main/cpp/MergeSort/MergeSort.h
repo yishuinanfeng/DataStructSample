@@ -4,10 +4,13 @@
 
 #ifndef DATASTRUCTURESAMPLE_MERGESORT_H
 #define DATASTRUCTURESAMPLE_MERGESORT_H
+
 /**
  * 归并排序
  */
 class MergeSort {
+
+public:
     /**
      * 普通的归并排序
      * @param arr
@@ -21,6 +24,23 @@ class MergeSort {
      * @param len
      */
     void sort1(int arr[], int len);
+
+private:
+    /**
+     * 真正的归并排序
+     * @param arr
+     * @param startIndex
+     * @param endIndex
+     */
+    void mergeSort(int *arr, int startIndex, int endIndex);
+    /**
+     * 合并函数
+     * @param arr
+     * @param startIndex
+     * @param midIndex
+     * @param endIndex
+     */
+    void merge(int *arr, int startIndex, int midIndex, int endIndex);
 };
 
 

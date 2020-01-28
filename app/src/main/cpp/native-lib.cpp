@@ -6,6 +6,7 @@
 #include "SelectSort/SelectSort.h"
 #include "InsertSort/InsertSort.h"
 #include "ShellSort/ShellSort.h"
+#include "MergeSort/MergeSort.h"
 
 #define LOGD(...) __android_log_print(ANDROID_LOG_DEBUG,"DataStructure",__VA_ARGS__)
 
@@ -55,13 +56,13 @@ Java_com_haha_datastructuresample_MainActivity_stringFromJNI(
 //-------------------LinkedList----------------------------
 
 // -----------------------BubbleSort------------------------------
-    int a[] = {2, 5, 3, 8, 1, 4, 0, 6};
-    BubbleSort *bubbleSort = new BubbleSort();
-    bubbleSort->sort2(a, 8);
-
-    for (int i = 0; i < 8; ++i) {
-        LOGD("arr factor:%d", a[i]);
-    }
+//    int a[] = {2, 5, 3, 8, 1, 4, 0, 6};
+//    BubbleSort *bubbleSort = new BubbleSort();
+//    bubbleSort->sort2(a, 8);
+//
+//    for (int i = 0; i < 8; ++i) {
+//        LOGD("arr factor:%d", a[i]);
+//    }
 
     // -----------------------BubbleSort------------------------------
     //
@@ -102,6 +103,21 @@ Java_com_haha_datastructuresample_MainActivity_stringFromJNI(
 //    LOGD("ShellSort end");
 
 //    // -----------------------ShellSort------------------------------
+
+// -----------------------MergeSort------------------------------
+
+    LOGD("MergeSort start");
+
+    int a[] = {2, 5, 3, 8, 1, 4, 0, 6};
+    MergeSort *mergeSort = new MergeSort();
+    mergeSort->sort(a, 8);
+
+    for (int i = 0; i < 8; ++i) {
+        LOGD("arr factor:%d", a[i]);
+    }
+
+    // -----------------------MergeSort------------------------------
+
 
 
     std::string hello = "Hello from C++";
