@@ -7,7 +7,10 @@
 
 #include <assert.h>
 #include <stddef.h>
-#include "../ArrayList/ArrayList.hpp"
+#include <android/log.h>
+
+#define LOGD(...) __android_log_print(ANDROID_LOG_DEBUG,"DataStructure",__VA_ARGS__)
+
 
 template<class E>
 struct Node {

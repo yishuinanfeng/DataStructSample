@@ -9,6 +9,7 @@
 #include "MergeSort/MergeSort.h"
 #include "FastSort/FastSort.h"
 #include "ArrayStack/ArrayStack.hpp"
+#include "LinkedStack/LinkedStack.hpp"
 
 #define LOGD(...) __android_log_print(ANDROID_LOG_DEBUG,"DataStructure",__VA_ARGS__)
 
@@ -136,15 +137,28 @@ Java_com_haha_datastructuresample_MainActivity_stringFromJNI(
 
 
     // -----------------------ArrayStack------------------------------
-    auto *arrayStack = new ArrayStack<int>();
+    auto *pLinkedStack = new LinkedStack<int>();
+
+    pLinkedStack->pop();
+    pLinkedStack->peek();
+
     for (int i = 0; i < 20; ++i) {
-        arrayStack->push(i);
+        pLinkedStack->push(i);
     }
 
-    LOGD("arrayStack factor:%d", arrayStack->peek());
+    LOGD("arrayStack factor:%d", pLinkedStack->peek());
 
-    while (!arrayStack->isEmpty()) {
-        LOGD("arrayStack factor:%d", arrayStack->pop());
+    while (!pLinkedStack->isEmpty()) {
+        LOGD("arrayStack factor:%d", pLinkedStack->pop());
+    }
+
+    for (int i = 0; i < 5; ++i) {
+        pLinkedStack->push(i);
+    }
+
+    LOGD("arrayStack factor:%d", pLinkedStack->pop());
+    while (!pLinkedStack->isEmpty()) {
+        LOGD("arrayStack factor:%d", pLinkedStack->pop());
     }
 
     // -----------------------ArrayStack------------------------------

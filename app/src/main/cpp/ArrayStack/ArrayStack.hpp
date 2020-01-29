@@ -53,6 +53,7 @@ public:
      */
     void push(E e);
 
+private:
     void growArray();
 };
 
