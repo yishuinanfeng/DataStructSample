@@ -8,6 +8,7 @@
 #include "ShellSort/ShellSort.h"
 #include "MergeSort/MergeSort.h"
 #include "FastSort/FastSort.h"
+#include "ArrayStack/ArrayStack.hpp"
 
 #define LOGD(...) __android_log_print(ANDROID_LOG_DEBUG,"DataStructure",__VA_ARGS__)
 
@@ -121,17 +122,32 @@ Java_com_haha_datastructuresample_MainActivity_stringFromJNI(
     //
     // -----------------------FastSort------------------------------
 
-    LOGD("FastSort start");
-
-    int a[] = {2, 5, 3, 8, 1, 4, 0, 6};
-    FastSort *pFastSort = new FastSort();
-    pFastSort->sort1(a, 8);
-
-    for (int i = 0; i < 8; ++i) {
-        LOGD("arr factor:%d", a[i]);
-    }
+//    LOGD("FastSort start");
+//
+//    int a[] = {2, 5, 3, 8, 1, 4, 0, 6};
+//    FastSort *pFastSort = new FastSort();
+//    pFastSort->sort1(a, 8);
+//
+//    for (int i = 0; i < 8; ++i) {
+//        LOGD("arr factor:%d", a[i]);
+//    }
 
     // -----------------------FastSort------------------------------
+
+
+    // -----------------------ArrayStack------------------------------
+    auto *arrayStack = new ArrayStack<int>();
+    for (int i = 0; i < 20; ++i) {
+        arrayStack->push(i);
+    }
+
+    LOGD("arrayStack factor:%d", arrayStack->peek());
+
+    while (!arrayStack->isEmpty()) {
+        LOGD("arrayStack factor:%d", arrayStack->pop());
+    }
+
+    // -----------------------ArrayStack------------------------------
 
 
 

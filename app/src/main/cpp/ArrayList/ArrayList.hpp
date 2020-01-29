@@ -108,6 +108,7 @@ int ArrayList<E>::size() {
 
 template<class E>
 void ArrayList<E>::grow(int capacity) {
+    //扩容1.5倍
     int newLength = length + (length >> 1);
     LOGD("grow length:%d,newLength:%d", length, newLength);
     //todo 什么时候条件会成立？
@@ -116,7 +117,7 @@ void ArrayList<E>::grow(int capacity) {
     }
 
     E *newArray = (E *) malloc(sizeof(E) * newLength);
-
+    //以下操作和realloc功能相同
     if (array) {
         memcpy(newArray, array, sizeof(E) * index);
         free(array);
