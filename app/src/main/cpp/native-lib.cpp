@@ -139,8 +139,8 @@ Java_com_haha_datastructuresample_MainActivity_stringFromJNI(
     // -----------------------ArrayStack------------------------------
     auto *pLinkedStack = new LinkedStack<int>();
 
-    pLinkedStack->pop();
-    pLinkedStack->peek();
+//    pLinkedStack->pop();
+//    pLinkedStack->peek();
 
     for (int i = 0; i < 20; ++i) {
         pLinkedStack->push(i);
@@ -157,9 +157,11 @@ Java_com_haha_datastructuresample_MainActivity_stringFromJNI(
     }
 
     LOGD("arrayStack factor:%d", pLinkedStack->pop());
-    while (!pLinkedStack->isEmpty()) {
-        LOGD("arrayStack factor:%d", pLinkedStack->pop());
-    }
+//    while (!pLinkedStack->isEmpty()) {
+//        LOGD("arrayStack factor:%d", pLinkedStack->pop());
+//    }
+
+    delete pLinkedStack;
 
     // -----------------------ArrayStack------------------------------
 

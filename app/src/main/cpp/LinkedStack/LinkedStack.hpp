@@ -7,6 +7,8 @@
 
 #include "../LinkedList/LinkedList.hpp"
 
+#define LOGD(...) __android_log_print(ANDROID_LOG_DEBUG,"DataStructure",__VA_ARGS__)
+
 /**
  * 表示一个元素节点
  * @tparam E
@@ -77,8 +79,9 @@ LinkedStack<E>::LinkedStack() {
 template<class E>
 LinkedStack<E>::~LinkedStack() {
     while (top) {
-        top = top->pre;
         StackNode<E> *t = top;
+        top = top->pre;
+        LOGD("~LinkedStack value:%d", t->value);
         delete t;
     }
 }
