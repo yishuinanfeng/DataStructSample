@@ -7,6 +7,7 @@
 #include "InsertSort/InsertSort.h"
 #include "ShellSort/ShellSort.h"
 #include "MergeSort/MergeSort.h"
+#include "FastSort/FastSort.h"
 
 #define LOGD(...) __android_log_print(ANDROID_LOG_DEBUG,"DataStructure",__VA_ARGS__)
 
@@ -106,17 +107,31 @@ Java_com_haha_datastructuresample_MainActivity_stringFromJNI(
 
 // -----------------------MergeSort------------------------------
 
-    LOGD("MergeSort start");
+//    LOGD("MergeSort start");
+//
+//    int a[] = {2, 5, 3, 8, 1, 4, 0, 6};
+//    MergeSort *mergeSort = new MergeSort();
+//    mergeSort->sort1(a, 8);
+//
+//    for (int i = 0; i < 8; ++i) {
+//        LOGD("arr factor:%d", a[i]);
+//    }
+
+    // -----------------------MergeSort------------------------------
+    //
+    // -----------------------FastSort------------------------------
+
+    LOGD("FastSort start");
 
     int a[] = {2, 5, 3, 8, 1, 4, 0, 6};
-    MergeSort *mergeSort = new MergeSort();
-    mergeSort->sort1(a, 8);
+    FastSort *pFastSort = new FastSort();
+    pFastSort->sort(a, 8);
 
     for (int i = 0; i < 8; ++i) {
         LOGD("arr factor:%d", a[i]);
     }
 
-    // -----------------------MergeSort------------------------------
+    // -----------------------FastSort------------------------------
 
 
 

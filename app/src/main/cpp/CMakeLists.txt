@@ -26,6 +26,7 @@ add_library( # Sets the name of the library.
         InsertSort/InsertSort.cpp
         ShellSort/ShellSort.cpp
         MergeSort/MergeSort.cpp
+        FastSort/FastSort.cpp
         ArrayUtil.cpp)
 
 # Searches for a specified prebuilt library and stores the path as a
