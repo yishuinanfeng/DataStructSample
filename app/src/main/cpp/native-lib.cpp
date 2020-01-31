@@ -10,6 +10,7 @@
 #include "FastSort/FastSort.h"
 #include "ArrayStack/ArrayStack.hpp"
 #include "LinkedStack/LinkedStack.hpp"
+#include "ArrayQueue/ArrayQueue.hpp"
 
 #define LOGD(...) __android_log_print(ANDROID_LOG_DEBUG,"DataStructure",__VA_ARGS__)
 
@@ -135,35 +136,59 @@ Java_com_haha_datastructuresample_MainActivity_stringFromJNI(
 
     // -----------------------FastSort------------------------------
 
+    //--------------------------ArrayStack-----------------------------
 
-    // -----------------------ArrayStack------------------------------
-    auto *pLinkedStack = new LinkedStack<int>();
+    //   auto *arrayStack = new ArrayStack<int>();
+    //--------------------------ArrayStack-----------------------------
+
+
+    // -----------------------LinkedStack------------------------------
+    //  auto *pLinkedStack = new LinkedStack<int>();
 
 //    pLinkedStack->pop();
 //    pLinkedStack->peek();
 
-    for (int i = 0; i < 20; ++i) {
-        pLinkedStack->push(i);
-    }
-
-    LOGD("arrayStack factor:%d", pLinkedStack->peek());
-
-    while (!pLinkedStack->isEmpty()) {
-        LOGD("arrayStack factor:%d", pLinkedStack->pop());
-    }
-
-    for (int i = 0; i < 5; ++i) {
-        pLinkedStack->push(i);
-    }
-
-    LOGD("arrayStack factor:%d", pLinkedStack->pop());
+//    for (int i = 0; i < 20; ++i) {
+//        pLinkedStack->push(i);
+//    }
+//
+//    LOGD("arrayStack factor:%d", pLinkedStack->peek());
+//
 //    while (!pLinkedStack->isEmpty()) {
 //        LOGD("arrayStack factor:%d", pLinkedStack->pop());
 //    }
+//
+//    for (int i = 0; i < 5; ++i) {
+//        pLinkedStack->push(i);
+//    }
+//
+//    LOGD("arrayStack factor:%d", pLinkedStack->pop());
+//    while (!pLinkedStack->isEmpty()) {
+//        LOGD("arrayStack factor:%d", pLinkedStack->pop());
+//    }
+//
+//    delete pLinkedStack;
 
-    delete pLinkedStack;
+    // -----------------------LinkedStack------------------------------
 
-    // -----------------------ArrayStack------------------------------
+
+    // -----------------------ArrayQueue------------------------------
+    LOGD("arrayQueue start");
+    auto *arrayQueue = new ArrayQueue<int>();
+
+    for (int i = 0; i < 10; ++i) {
+        LOGD("arrayQueue gonna add");
+        arrayQueue->add(i);
+    }
+
+    LOGD("arrayQueue->peek():%d", arrayQueue->peek());
+
+    while (!arrayQueue->isEmpty()) {
+        //  arrayQueue->peek();
+        LOGD("arrayQueue->poll():%d", arrayQueue->poll());
+    }
+
+    // -----------------------ArrayQueue------------------------------
 
 
 

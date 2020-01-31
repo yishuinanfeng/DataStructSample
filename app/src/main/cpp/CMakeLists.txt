@@ -19,15 +19,13 @@ add_library( # Sets the name of the library.
         # Provides a relative path to your source file(s).
         native-lib.cpp
 
-        ArrayList/ArrayList.cpp
-        LinkedList/LinkedList.cpp
         BubbleSort/BubbleSort.cpp
         SelectSort/SelectSort.cpp
         InsertSort/InsertSort.cpp
         ShellSort/ShellSort.cpp
         MergeSort/MergeSort.cpp
         FastSort/FastSort.cpp
-        ArrayStack/ArrayStack.cpp
+        BinaryOperation/BinaryOperation.cpp
         ArrayUtil.cpp)
 
 # Searches for a specified prebuilt library and stores the path as a
