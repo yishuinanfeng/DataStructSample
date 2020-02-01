@@ -87,15 +87,37 @@ class KHashMap<K, V>(
     }
 
     private fun addNodeToArray(key: K, value: V, index: Int, hash: Int) {
-        val node = Node(hash, key, value, null)
+        val node = Node(hash, key, value, table[index])
         table[index] = node
+        Log.d(HASHMAP_TAG, "addNodeToArray node：$node，index：$index")
     }
 
     /**
      * 数组扩容
      */
     private fun resize() {
+        val newCapacity = table.size shl 1
+        Log.d(HASHMAP_TAG, "resize newCapacity：$newCapacity")
+        val newTable = arrayOfNulls<Node<K, V>>(newCapacity)
+        //数组迁移
+        for (node in table) {
+            //获取到数组每个元素的Node
+            var n = node
+            //遍历以该Node为首节点的链表
+            while (n != null) {
+                val newIndex = n.hash.and(newCapacity - 1)
+                Log.d(HASHMAP_TAG, "resize node：$n，newIndex：$newIndex")
+                val nodeSave = n
+                n = n.next
 
+                nodeSave.next = newTable[newIndex]
+                newTable[newIndex] = nodeSave
+
+            }
+        }
+
+        table = newTable
+        threshold = (newCapacity * loadFactor).toInt()
     }
 
     private fun getIndex(hashCode: Int): Int {
@@ -103,7 +125,7 @@ class KHashMap<K, V>(
     }
 
     /**
-     * 再次哈希，使得哈希码更加均匀
+     * 二次哈希，使得哈希码更加均匀
      */
     private fun hash(key: Int?): Int {
         val h = key.hashCode()
@@ -123,6 +145,7 @@ class KHashMap<K, V>(
         val index = getIndex(hash)
 
         var e = table[index]
+        Log.d(HASHMAP_TAG, "resize e：$e，index：$index")
         while (e != null) {
             if ((e.hash == hash) && ((e.key === key) || (e.key == key))) {
                 return e.value
@@ -150,5 +173,5 @@ class KHashMap<K, V>(
     /**
      * 一个键值对节点
      */
-    class Node<K, V>(val hash: Int, val key: K, var value: V, var next: Node<K, V>?)
+    data class Node<K, V>(val hash: Int, val key: K, var value: V, var next: Node<K, V>?)
 }
