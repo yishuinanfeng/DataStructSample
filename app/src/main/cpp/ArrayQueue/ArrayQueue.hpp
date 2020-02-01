@@ -13,7 +13,7 @@
 
 
 /**
- * 使用数组实现的队列（循环队列，即当数组的head或者tail到达数组末尾的时候下一个位置是数组头位置）
+ * 使用数组实现的单向队列（循环队列，即当数组的head或者tail到达数组末尾的时候下一个位置是数组头位置）
  * @tparam E
  */
 template<class E>
@@ -41,7 +41,7 @@ public:
 
     ~ArrayQueue();
 
-    void add(E e);
+    bool add(E e);
 
     /**
      * 返回最先入队的元素
@@ -77,13 +77,18 @@ public:
 };
 
 template<class E>
-void ArrayQueue<E>::add(E e) {
+bool ArrayQueue<E>::add(E e) {
+    if (arraySize >= MAXIMUM_CAPACITY) {
+        return false;
+    }
     array[tail] = e;
     tail = (tail + 1) & (arraySize - 1);
     LOGD("arrayQueue add head:%d,tail:%d,arraySize:%d", head, tail, arraySize);
     if (head == tail) {
         growArray();
     }
+
+    return true;
 }
 
 template<class E>
