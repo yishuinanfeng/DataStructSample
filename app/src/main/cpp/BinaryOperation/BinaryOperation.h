@@ -16,12 +16,12 @@ public:
     void binaryToDecimal(const int *binaryArr,const int size);
 
     /**
-     * 除二取余法十进制转为二进制
+     * 除二取余法十进制转为二进制（暂时只支持自然数）
      */
     void decimalToBinary(int number);
 
     /**
-     * 位移法
+     * 位移法（支持正负数补码）
      */
     void decimalToBinary1(int number);
 };

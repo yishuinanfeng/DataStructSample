@@ -32,11 +32,51 @@ void BinaryOperation::binaryToDecimal(const int *binaryArr, const int size) {
 }
 
 void BinaryOperation::decimalToBinary(int number) {
+    std::stack<int> stack;
+    while (number > 0) {
+        int n = number % 2;
+        stack.push(n);
+        number /= 2;
+    }
+
+    while (!stack.empty()) {
+        //从高位到低位循环打印出该二进制数
+        LOGD("decimalToBinary result:%d", stack.top());
+        stack.pop();
+    }
 
 }
 
 void BinaryOperation::decimalToBinary1(int number) {
+    std::stack<int> stack;
+    bool isNegative = false;
+    if (number < 0) {
+        isNegative = true;
+    }
+    for (int i = 0; i < 32; ++i) {
+        //正数只打印最高位的1，负数打印出全部32位
+        if (number == 0 & !isNegative) {
+            break;
+        }
 
+        //    if (i == 32 && number < 0) {
+        //number为负数的情况
+        //      LOGD("decimalToBinary1 result:%d", 1);
+        //   }
+
+        int result = number & 1;
+        stack.push(result);
+        // LOGD("for i:%d,number:%d,result:%d，stack size:%d", i, number, result, stack.size());
+        //  LOGD("for result:%d", result);
+        number = number >> 1;
+    }
+
+    while (!stack.empty()) {
+        //从高位到低位循环打印出该二进制数
+        //这里非常诡异，要打印出stack size才可以将数据打印全。。。
+        LOGD("stack size:%d,result:%d", stack.size(), stack.top());
+        stack.pop();
+    }
 }
 
 

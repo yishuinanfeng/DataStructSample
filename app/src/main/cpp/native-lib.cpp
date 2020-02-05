@@ -195,9 +195,9 @@ Java_com_haha_datastructuresample_MainActivity_stringFromJNI(
     // -----------------------BinaryOperation------------------------------
     BinaryOperation *binaryOperation = new BinaryOperation();
     //1101
-    int a[] = {1,1,0,1};
-    binaryOperation->binaryToDecimal(a, 4);
-
+   // int a[] = {1,1,0,1};
+  //  binaryOperation->binaryToDecimal(a, 4);
+    binaryOperation->decimalToBinary1(13);
     // -----------------------BinaryOperation------------------------------
 
 
