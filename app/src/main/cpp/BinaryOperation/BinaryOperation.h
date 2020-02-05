@@ -13,18 +13,17 @@ public:
     /**
      * 二进制转为十进制
      */
-    void binaryToDecimal();
+    void binaryToDecimal(const int *binaryArr,const int size);
 
     /**
      * 除二取余法十进制转为二进制
      */
-    void decimalToBinary();
+    void decimalToBinary(int number);
 
     /**
      * 位移法
      */
-    void decimalToBinary1();
-
+    void decimalToBinary1(int number);
 };
 
 
