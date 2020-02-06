@@ -219,18 +219,19 @@ Java_com_haha_datastructuresample_MainActivity_stringFromJNI(
     treeNode1->rightNode = treeNode3;
 
     treeNode2->leftNode = treeNode4;
-    treeNode2->rightNode = treeNode5;
+  //  treeNode2->rightNode = treeNode5;
 
     treeNode3->leftNode = treeNode6;
     treeNode3->rightNode = treeNode7;
 
     treeNode4->leftNode = treeNode8;
+    treeNode8->leftNode = treeNode5;
 
     auto *binaryTree = new BinaryTree<int>();
 
 
-    binaryTree->postOrderTravel(treeNode1, visitNode);
-
+    int height = binaryTree->getTreeHeight(treeNode1);
+    LOGD("binaryTree height:%d", height);
     // -----------------------BinaryTree------------------------------
 
 

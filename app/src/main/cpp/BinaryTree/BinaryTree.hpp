@@ -7,6 +7,8 @@
 
 #define LOGD(...) __android_log_print(ANDROID_LOG_DEBUG,"BinaryTree",__VA_ARGS__)
 
+#include<cmath>
+
 template<class E>
 class TreeNode {
 public:
@@ -40,18 +42,22 @@ public:
      * @param visit 访问节点函数指针
      */
     void preOrderTravel(TreeNode<E> *tree, void (*visit)(const E e));
+
     /**
      * 中序遍历
      * @param tree 树的根节点
      * @param visit 访问节点函数指针
      */
     void inOrderTravel(TreeNode<E> *tree, void (*visit)(const E e));
+
     /**
      * 后序遍历
      * @param tree 树的根节点
      * @param visit 访问节点函数指针
      */
     void postOrderTravel(TreeNode<E> *tree, void (*visit)(const E e));
+
+    int getTreeHeight(TreeNode<E> *tree);
 
 };
 
@@ -86,6 +92,17 @@ void BinaryTree<E>::postOrderTravel(TreeNode<E> *tree, void (*visit)(const E)) {
     postOrderTravel(tree->leftNode, visit);
     postOrderTravel(tree->rightNode, visit);
     visit(tree->e);
+}
+
+template<class E>
+int BinaryTree<E>::getTreeHeight(TreeNode<E> *tree) {
+    if (tree == NULL) {
+        return 0;
+    }
+    int leftHeight = getTreeHeight(tree->leftNode);
+    int rightHeight = getTreeHeight(tree->rightNode);
+    //左边和右边的高度加上自己
+    return fmax(leftHeight,rightHeight) + 1;
 }
 
 
