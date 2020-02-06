@@ -5,7 +5,6 @@
 #ifndef DATASTRUCTURESAMPLE_BINARYTREE_HPP
 #define DATASTRUCTURESAMPLE_BINARYTREE_HPP
 
-#define LOGD(...) __android_log_print(ANDROID_LOG_DEBUG,"BinaryTree",__VA_ARGS__)
 
 #include<cmath>
 
@@ -57,7 +56,19 @@ public:
      */
     void postOrderTravel(TreeNode<E> *tree, void (*visit)(const E e));
 
+    /**
+     * 求二叉树高度
+     * @param tree 树的根节点
+     * @return
+     */
     int getTreeHeight(TreeNode<E> *tree);
+
+    /**
+     * 是否是平衡二叉树
+     * @param tree 树的根节点
+     * @return
+     */
+    bool isBalanceTree(TreeNode<E> *tree);
 
 };
 
@@ -102,7 +113,29 @@ int BinaryTree<E>::getTreeHeight(TreeNode<E> *tree) {
     int leftHeight = getTreeHeight(tree->leftNode);
     int rightHeight = getTreeHeight(tree->rightNode);
     //左边和右边的高度加上自己
-    return fmax(leftHeight,rightHeight) + 1;
+    return fmax(leftHeight, rightHeight) + 1;
+}
+
+template<class E>
+bool BinaryTree<E>::isBalanceTree(TreeNode<E> *tree) {
+    if (tree == NULL) {
+        return true;
+    }
+    int leftHeight = getTreeHeight(tree->leftNode);
+    LOGD("getTreeHeight leftHeight：%d",leftHeight);
+    int rightHeight = getTreeHeight(tree->rightNode);
+    LOGD("getTreeHeight rightHeight：%d",rightHeight);
+    //左右子树高度差是否不大于1
+    bool isHeightDifferenceSatisfied = fabs(leftHeight - rightHeight) <= 1;
+    LOGD("isHeightDifferenceSatisfied：%d",isHeightDifferenceSatisfied);
+    if (!isHeightDifferenceSatisfied) {
+        //左右子树高度差大于1则不是平衡二叉树
+        return false;
+    }
+    //左右子树是否是平衡二叉树
+    bool isLeftBalanced = isBalanceTree(tree->leftNode);
+    bool isRightBalanced = isBalanceTree(tree->rightNode);
+    return isLeftBalanced && isRightBalanced;
 }
 
 
