@@ -5,6 +5,7 @@
 #ifndef DATASTRUCTURESAMPLE_BINARYTREE_HPP
 #define DATASTRUCTURESAMPLE_BINARYTREE_HPP
 
+#define LOGD_BinaryTree(...) __android_log_print(ANDROID_LOG_DEBUG,"PriorityQueue",__VA_ARGS__)
 
 #include<cmath>
 
@@ -20,6 +21,12 @@ public:
     TreeNode(E e);
 
     ~TreeNode();
+
+    /**
+     * 释放以当前节点为根节点的树
+     */
+    void freeTree();
+
 };
 
 template<class E>
@@ -36,8 +43,23 @@ TreeNode<E>::TreeNode(E e) {
 
 template<class E>
 TreeNode<E>::~TreeNode() {
-    //todo 释放所有的节点
+    LOGD_BinaryTree("free Node:%d", this->e);
 }
+
+template<class E>
+void TreeNode<E>::freeTree() {
+    //释放所有的节点(类似后序遍历方式)
+    if (this->leftNode) {
+        this->leftNode->freeTree();
+    }
+
+    if (this->rightNode) {
+        this->rightNode->freeTree();
+    }
+
+    delete this;
+}
+
 
 template<class E>
 class BinaryTree {
@@ -76,6 +98,12 @@ public:
      * @return
      */
     bool isBalanceTree(TreeNode<E> *tree);
+
+    /**
+   * 释放二叉树
+   * @param node 二叉树根结点
+   */
+    void freeTree(TreeNode<E> *node);
 
 };
 
@@ -129,12 +157,12 @@ bool BinaryTree<E>::isBalanceTree(TreeNode<E> *tree) {
         return true;
     }
     int leftHeight = getTreeHeight(tree->leftNode);
-    LOGD("getTreeHeight leftHeight：%d",leftHeight);
+    LOGD("getTreeHeight leftHeight：%d", leftHeight);
     int rightHeight = getTreeHeight(tree->rightNode);
-    LOGD("getTreeHeight rightHeight：%d",rightHeight);
+    LOGD("getTreeHeight rightHeight：%d", rightHeight);
     //左右子树高度差是否不大于1
     bool isHeightDifferenceSatisfied = fabs(leftHeight - rightHeight) <= 1;
-    LOGD("isHeightDifferenceSatisfied：%d",isHeightDifferenceSatisfied);
+    LOGD("isHeightDifferenceSatisfied：%d", isHeightDifferenceSatisfied);
     if (!isHeightDifferenceSatisfied) {
         //左右子树高度差大于1则不是平衡二叉树
         return false;
@@ -143,6 +171,12 @@ bool BinaryTree<E>::isBalanceTree(TreeNode<E> *tree) {
     bool isLeftBalanced = isBalanceTree(tree->leftNode);
     bool isRightBalanced = isBalanceTree(tree->rightNode);
     return isLeftBalanced && isRightBalanced;
+}
+
+template<class E>
+void BinaryTree<E>::freeTree(TreeNode<E> *node) {
+    LOGD_BinaryTree("free Tree");
+    node->freeTree();
 }
 
 
