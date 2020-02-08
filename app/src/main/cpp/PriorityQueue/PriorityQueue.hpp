@@ -65,10 +65,10 @@ public:
     void heapifyFromDown();
 
     /**
-     * 从上往下堆化
-     * @tparam E
+     * 从上（index为0）往下（index为heapifyIndex）堆化
+     * @tparam heapifyIndex:需要进行堆化的最后一个元素的index
      */
-    void heapifyFormUp(int i);
+    void heapifyFormUp(int heapifyIndex);
 
     /**
      * 遍历打印出整个数组,用于调试

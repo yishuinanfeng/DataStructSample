@@ -14,6 +14,7 @@
 #include "BinaryOperation/BinaryOperation.h"
 #include "BinaryTree/BinaryTree.hpp"
 #include "PriorityQueue/PriorityQueue.hpp"
+#include "HeapSort/HeapSort.h"
 
 #define LOGD(...) __android_log_print(ANDROID_LOG_DEBUG,"DataStructure",__VA_ARGS__)
 
@@ -207,33 +208,33 @@ Java_com_haha_datastructuresample_MainActivity_stringFromJNI(
     // -----------------------BinaryOperation------------------------------
 
     // -----------------------BinaryTree------------------------------
-    auto *treeNode1 = new TreeNode<int>(1);
-
-    auto *treeNode2 = new TreeNode<int>(2);
-    auto *treeNode3 = new TreeNode<int>(3);
-    auto *treeNode4 = new TreeNode<int>(4);
-    auto *treeNode5 = new TreeNode<int>(5);
-    auto *treeNode6 = new TreeNode<int>(6);
-    auto *treeNode7 = new TreeNode<int>(7);
-    auto *treeNode8 = new TreeNode<int>(8);
+//    auto *treeNode1 = new TreeNode<int>(1);
+//
+//    auto *treeNode2 = new TreeNode<int>(2);
+//    auto *treeNode3 = new TreeNode<int>(3);
+//    auto *treeNode4 = new TreeNode<int>(4);
+//    auto *treeNode5 = new TreeNode<int>(5);
+//    auto *treeNode6 = new TreeNode<int>(6);
+//    auto *treeNode7 = new TreeNode<int>(7);
+//    auto *treeNode8 = new TreeNode<int>(8);
 
 
 
 //
-    treeNode1->leftNode = treeNode2;
-    treeNode1->rightNode = treeNode3;
+//    treeNode1->leftNode = treeNode2;
+//    treeNode1->rightNode = treeNode3;
 //
-    treeNode2->leftNode = treeNode4;
+    // treeNode2->leftNode = treeNode4;
     //treeNode2->rightNode = treeNode5;
 
-    treeNode3->leftNode = treeNode6;
-    treeNode3->rightNode = treeNode7;
-
-    treeNode4->leftNode = treeNode8;
-    treeNode7->rightNode = treeNode5;
+//    treeNode3->leftNode = treeNode6;
+//    treeNode3->rightNode = treeNode7;
 //
-    auto *binaryTree = new BinaryTree<int>();
-    binaryTree->freeTree(treeNode1);
+//    treeNode4->leftNode = treeNode8;
+//    treeNode7->rightNode = treeNode5;
+////
+//    auto *binaryTree = new BinaryTree<int>();
+//    binaryTree->freeTree(treeNode1);
 //
 //    bool isBalanced = binaryTree->isBalanceTree(treeNode1);
 //    LOGD("binaryTree isBalanced:%d", isBalanced);
@@ -272,6 +273,18 @@ Java_com_haha_datastructuresample_MainActivity_stringFromJNI(
 //    delete priorityQueue;
     // priorityQueue->printArray();
     // -----------------------PriorityQueue------------------------------
+
+
+    // -----------------------HeapSort------------------------------
+    int a[] = {2, 5, 3, 7, 1, 4, 0, 6};
+    auto *heapSort = new HeapSort();
+    heapSort->sort(a, 8);
+
+    for (int i = 0; i < 8; ++i) {
+        LOGD("arr factor:%d", a[i]);
+    }
+
+    // -----------------------HeapSort------------------------------
 
 
 
