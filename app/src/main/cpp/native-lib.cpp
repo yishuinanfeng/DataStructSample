@@ -13,6 +13,7 @@
 #include "ArrayQueue/ArrayQueue.hpp"
 #include "BinaryOperation/BinaryOperation.h"
 #include "BinaryTree/BinaryTree.hpp"
+#include "PriorityQueue/PriorityQueue.hpp"
 
 #define LOGD(...) __android_log_print(ANDROID_LOG_DEBUG,"DataStructure",__VA_ARGS__)
 
@@ -206,35 +207,64 @@ Java_com_haha_datastructuresample_MainActivity_stringFromJNI(
     // -----------------------BinaryOperation------------------------------
 
     // -----------------------BinaryTree------------------------------
-    auto *treeNode1 = new TreeNode<int>(1);
-    auto *treeNode2 = new TreeNode<int>(2);
-    auto *treeNode3 = new TreeNode<int>(3);
-    auto *treeNode4 = new TreeNode<int>(4);
-    auto *treeNode5 = new TreeNode<int>(5);
-    auto *treeNode6 = new TreeNode<int>(6);
-    auto *treeNode7 = new TreeNode<int>(7);
-    auto *treeNode8 = new TreeNode<int>(8);
-
-    treeNode1->leftNode = treeNode2;
-    treeNode1->rightNode = treeNode3;
-
-    treeNode2->leftNode = treeNode4;
-      //treeNode2->rightNode = treeNode5;
-
-    treeNode3->leftNode = treeNode6;
-    treeNode3->rightNode = treeNode7;
-
-    treeNode4->leftNode = treeNode8;
-    treeNode7->rightNode = treeNode5;
-
-    auto *binaryTree = new BinaryTree<int>();
-
-    bool isBalanced = binaryTree->isBalanceTree(treeNode1);
-    LOGD("binaryTree isBalanced:%d", isBalanced);
+//    auto *treeNode1 = new TreeNode<int>(1);
+//    auto *treeNode2 = new TreeNode<int>(2);
+//    auto *treeNode3 = new TreeNode<int>(3);
+//    auto *treeNode4 = new TreeNode<int>(4);
+//    auto *treeNode5 = new TreeNode<int>(5);
+//    auto *treeNode6 = new TreeNode<int>(6);
+//    auto *treeNode7 = new TreeNode<int>(7);
+//    auto *treeNode8 = new TreeNode<int>(8);
+//
+//    treeNode1->leftNode = treeNode2;
+//    treeNode1->rightNode = treeNode3;
+//
+//    treeNode2->leftNode = treeNode4;
+//      //treeNode2->rightNode = treeNode5;
+//
+//    treeNode3->leftNode = treeNode6;
+//    treeNode3->rightNode = treeNode7;
+//
+//    treeNode4->leftNode = treeNode8;
+//    treeNode7->rightNode = treeNode5;
+//
+//    auto *binaryTree = new BinaryTree<int>();
+//
+//    bool isBalanced = binaryTree->isBalanceTree(treeNode1);
+//    LOGD("binaryTree isBalanced:%d", isBalanced);
 
     //  int height = binaryTree->getTreeHeight(treeNode1);
     //  LOGD("binaryTree height:%d", height);
     // -----------------------BinaryTree------------------------------
+
+
+    // -----------------------PriorityQueue------------------------------
+
+    auto *priorityQueue = new PriorityQueue<int>();
+    priorityQueue->offer(1);
+    priorityQueue->offer(2);
+    priorityQueue->offer(3);
+    priorityQueue->offer(4);
+    priorityQueue->offer(5);
+//    priorityQueue->offer(6);
+//    priorityQueue->offer(7);
+//    priorityQueue->offer(8);
+//    priorityQueue->offer(9);
+//    priorityQueue->offer(10);
+//    priorityQueue->offer(11);
+    //  priorityQueue->poll();
+//    priorityQueue->poll();
+//    for (int i = 0; i < priorityQueue->size(); ++i) {
+//        LOGD("priorityQueue factor:%d", priorityQueue->poll());
+//    }
+    while (!priorityQueue->isEmpty()) {
+        LOGD_PriorityQueue("priorityQueue factor:%d,size:%d", priorityQueue->poll(),
+                           priorityQueue->size());
+    }
+
+    delete priorityQueue;
+    // priorityQueue->printArray();
+    // -----------------------PriorityQueue------------------------------
 
 
 

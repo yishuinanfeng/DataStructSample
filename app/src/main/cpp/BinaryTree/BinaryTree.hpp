@@ -18,6 +18,8 @@ public:
     TreeNode(E e, TreeNode<E> *leftNode, TreeNode<E> *rightNode);
 
     TreeNode(E e);
+
+    ~TreeNode();
 };
 
 template<class E>
@@ -30,6 +32,11 @@ TreeNode<E>::TreeNode(E e, TreeNode<E> *leftNode, TreeNode<E> *rightNode) {
 template<class E>
 TreeNode<E>::TreeNode(E e) {
     this->e = e;
+}
+
+template<class E>
+TreeNode<E>::~TreeNode() {
+    //todo 释放所有的节点
 }
 
 template<class E>
