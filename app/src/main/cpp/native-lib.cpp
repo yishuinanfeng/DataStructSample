@@ -293,17 +293,24 @@ Java_com_haha_datastructuresample_MainActivity_stringFromJNI(
 
 
     // -----------------------BinarySearchTree------------------------------
-
     auto *binarySearchTree = new BinarySearchTree<int,char>();
+    binarySearchTree->put(2,'b');
+    binarySearchTree->put(7,'g');
+    binarySearchTree->put(3,'c');
     binarySearchTree->put(1,'a');
-    binarySearchTree->put(3,'b');
-    binarySearchTree->put(5,'c');
+    binarySearchTree->put(8,'h');
+    binarySearchTree->put(6,'f');
     binarySearchTree->put(4,'d');
-    binarySearchTree->put(7,'a');
-    binarySearchTree->put(2,'e');
-    binarySearchTree->put(9,'t');
-    binarySearchTree->put(10,'h');
+    binarySearchTree->put(5,'e');
 
+    binarySearchTree->remove(8);
+    binarySearchTree->remove(2);
+    binarySearchTree->remove(7);
+
+    binarySearchTree->put(3,'i');
+    binarySearchTree->put(10,'j');
+    //binarySearchTree->search(10);
+  //  LOGD("binarySearchTree factor:%c", binarySearchTree->search(7));
     binarySearchTree->printTree(visitSearchNode);
 
     // -----------------------BinarySearchTree------------------------------
