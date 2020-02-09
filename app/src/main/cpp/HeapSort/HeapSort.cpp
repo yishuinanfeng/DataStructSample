@@ -42,6 +42,7 @@ void HeapSort::heapifyFormUp(int *array, int heapifyIndex) {
         if (array[currentIndex] < array[maxIndex]) {
             ArrayUtil::swap1(array[currentIndex], array[maxIndex]);
         } else {
+            //一旦根节点比两个子节点都小，则堆化结束
             break;
         }
         //将currentIndex移动到原来根节点新的位置

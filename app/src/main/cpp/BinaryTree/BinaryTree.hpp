@@ -8,57 +8,7 @@
 #define LOGD_BinaryTree(...) __android_log_print(ANDROID_LOG_DEBUG,"PriorityQueue",__VA_ARGS__)
 
 #include<cmath>
-
-template<class E>
-class TreeNode {
-public:
-    E e;
-    TreeNode<E> *leftNode = NULL;
-    TreeNode<E> *rightNode = NULL;
-
-    TreeNode(E e, TreeNode<E> *leftNode, TreeNode<E> *rightNode);
-
-    TreeNode(E e);
-
-    ~TreeNode();
-
-    /**
-     * 释放以当前节点为根节点的树
-     */
-    void freeTree();
-
-};
-
-template<class E>
-TreeNode<E>::TreeNode(E e, TreeNode<E> *leftNode, TreeNode<E> *rightNode) {
-    this->e = e;
-    this->leftNode = leftNode;
-    this->rightNode = rightNode;
-}
-
-template<class E>
-TreeNode<E>::TreeNode(E e) {
-    this->e = e;
-}
-
-template<class E>
-TreeNode<E>::~TreeNode() {
-    LOGD_BinaryTree("free Node:%d", this->e);
-}
-
-template<class E>
-void TreeNode<E>::freeTree() {
-    //释放所有的节点(类似后序遍历方式)
-    if (this->leftNode) {
-        this->leftNode->freeTree();
-    }
-
-    if (this->rightNode) {
-        this->rightNode->freeTree();
-    }
-
-    delete this;
-}
+#include "TreeNode.hpp"
 
 
 template<class E>
@@ -106,6 +56,7 @@ public:
     void freeTree(TreeNode<E> *node);
 
 };
+
 
 template<class E>
 void BinaryTree<E>::preOrderTravel(TreeNode<E> *tree, void (*visit)(const E)) {

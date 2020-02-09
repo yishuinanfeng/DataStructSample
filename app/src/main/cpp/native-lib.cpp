@@ -15,11 +15,16 @@
 #include "BinaryTree/BinaryTree.hpp"
 #include "PriorityQueue/PriorityQueue.hpp"
 #include "HeapSort/HeapSort.h"
+#include "BinaryTree/BinarySearchTree.hpp"
 
 #define LOGD(...) __android_log_print(ANDROID_LOG_DEBUG,"DataStructure",__VA_ARGS__)
 
 void visitNode(const int data) {
     __android_log_print(ANDROID_LOG_ERROR, "BinaryTree", "%d", data);
+}
+
+void visitSearchNode(const char data) {
+    __android_log_print(ANDROID_LOG_ERROR, "BinarySearchTree", "%c", data);
 }
 
 extern "C" JNIEXPORT jstring JNICALL
@@ -276,15 +281,32 @@ Java_com_haha_datastructuresample_MainActivity_stringFromJNI(
 
 
     // -----------------------HeapSort------------------------------
-    int a[] = {2, 5, 3, 7, 1, 4, 0, 6};
-    auto *heapSort = new HeapSort();
-    heapSort->sort(a, 8);
-
-    for (int i = 0; i < 8; ++i) {
-        LOGD("arr factor:%d", a[i]);
-    }
+//    int a[] = {2, 5, 3, 7, 1, 4, 0, 6};
+//    auto *heapSort = new HeapSort();
+//    heapSort->sort(a, 8);
+//
+//    for (int i = 0; i < 8; ++i) {
+//        LOGD("arr factor:%d", a[i]);
+//    }
 
     // -----------------------HeapSort------------------------------
+
+
+    // -----------------------BinarySearchTree------------------------------
+
+    auto *binarySearchTree = new BinarySearchTree<int,char>();
+    binarySearchTree->put(1,'a');
+    binarySearchTree->put(3,'b');
+    binarySearchTree->put(5,'c');
+    binarySearchTree->put(4,'d');
+    binarySearchTree->put(7,'a');
+    binarySearchTree->put(2,'e');
+    binarySearchTree->put(9,'t');
+    binarySearchTree->put(10,'h');
+
+    binarySearchTree->printTree(visitSearchNode);
+
+    // -----------------------BinarySearchTree------------------------------
 
 
 
